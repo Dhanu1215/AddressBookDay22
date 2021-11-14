@@ -123,7 +123,6 @@ public class AddressBook {
                         System.out.println("Email = " + show.getEmail());
                     }
                     break;
-
                 case 3:
                     Contacts1.editContact();
                     break;
