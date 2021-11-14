@@ -8,51 +8,59 @@ import java.util.Scanner;
  */
 public class AddressBook {
 
-    public static ArrayList contacts = new ArrayList();
+    private static ArrayList<Contacts> list = new ArrayList<Contacts>();
+
+    /*
+     * Call method to add contacts in ArrayList
+     * Create object and add details in it and put it in that list
+     */
+
+    public void AddContactsDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("First Name = ");
+        String firstName = sc.nextLine();
+        System.out.println("Last Name = ");
+        String lastName = sc.nextLine();
+        System.out.println("Address = ");
+        String address = sc.nextLine();
+        System.out.println("City = ");
+        String city = sc.nextLine();
+        System.out.println("State = ");
+        String state = sc.nextLine();
+        System.out.println("Zip Code = ");
+        int zip = sc.nextInt();
+        System.out.println("Phone Number = ");
+        long phoneNumber = sc.nextLong();
+        System.out.println("Email = ");
+        String email = sc.nextLine();
+        Contacts person = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        list.add(person);
+        person.display();
+        System.out.println(list);
+    }
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Address book program");
-
+        AddressBook Contacts1 = new AddressBook();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter contact details");
-        AddressBook contact = new AddressBook();
-
-        System.out.println("Enter Firstname");
-        String firstName = sc.next();
-
-        System.out.println("Enter Lastname");
-        String lastName = sc.next();
-
-        System.out.println("Enter Address");
-        String address = sc.next();
-
-        System.out.println("Enter City");
-        String city = sc.next();
-
-        System.out.println("Enter State");
-        String state = sc.next();
-
-        System.out.println("Enter Zip");
-        int zip = sc.nextInt();
-
-        System.out.println("Enter Phone-Number");
-        long phoneNumber = sc.nextLong();
-
-        System.out.println("Enter Emails");
-        String email = sc.next();
-        contact.addContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        System.out.println("0. Exit");
+        System.out.println("1. Add Contacts");
+        System.out.println("Enter Your Choice");
+        int choice = sc.nextInt();
+        while (choice >= 1) {
+            switch (choice) {
+                case 1:
+                    Contacts1.AddContactsDetails();
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    break;
+            }
+            System.out.println(" ");
+            System.out.println("0. Exit");
+            System.out.println("1. Add Contacts");
+            System.out.println("Enter Your Choice");
+            choice = sc.nextInt();
+        }
+        System.out.println("The Program End");
     }
-
-    private void addContact(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
-        contacts.add(firstName);
-        contacts.add(lastName);
-        contacts.add(address);
-        contacts.add(city);
-        contacts.add(state);
-        contacts.add(zip);
-        contacts.add(phoneNumber);
-        contacts.add(email);
-        System.out.println("Contact details are " + contacts);
-    }
-
 }
