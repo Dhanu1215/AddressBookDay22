@@ -11,6 +11,23 @@ public class AddressBook {
     private static ArrayList<Contacts> list = new ArrayList<Contacts>();
 
     /**
+     * Call method to delete contact by searching firstname in contact list
+     */
+    private void deleteContact() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter firstname to Delete Contact: ");
+        String name = sc.nextLine();
+        for (Contacts search : list) {
+            if (name.equalsIgnoreCase(search.getFirstName())) {
+                System.out.println("Entered name found in the Address Book, deleting contact");
+                list.remove(search);
+            } else {
+                System.out.println("Entered name not found in the Address Book");
+            }
+        }
+    }
+
+    /**
      * Call method to edit the contact by searching firstname
      */
     private void editContact() {
@@ -19,7 +36,7 @@ public class AddressBook {
         String name = sc.nextLine();
         for (Contacts search : list) {
             if (name.equalsIgnoreCase(search.getFirstName())) {
-                System.out.println("Entered Name found in the Contacts");
+                System.out.println("Entered name found in the Contacts");
                 System.out.println("Enter the updated first name");
                 String firstName = sc.next();
                 search.setFirstName(firstName);
@@ -46,7 +63,7 @@ public class AddressBook {
                 search.setEmail(email);
                 search.display();
             } else {
-                System.out.println("Entered name not  found in the AddressBook");
+                System.out.println("Entered name not found in the AddressBook");
             }
         }
     }
@@ -76,7 +93,6 @@ public class AddressBook {
         Contacts person = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
         list.add(person);
         person.display();
-        System.out.println(list);
     }
 
     public static void main(String[] args) {
@@ -86,6 +102,7 @@ public class AddressBook {
         System.out.println("1. Add Contacts");
         System.out.println("2. Show Contacts");
         System.out.println("3. Edit Contacts");
+        System.out.println("4. Delete Contacts");
         System.out.println("Enter Your Choice");
         int choice = sc.nextInt();
         while (choice >= 1) {
@@ -110,7 +127,9 @@ public class AddressBook {
                 case 3:
                     Contacts1.editContact();
                     break;
-
+                case 4:
+                    Contacts1.deleteContact();
+                    break;
                 default:
                     System.out.println("Invalid input");
                     break;
@@ -120,9 +139,11 @@ public class AddressBook {
             System.out.println("1. Add Contacts");
             System.out.println("2. Show Contacts");
             System.out.println("3. Edit Contacts");
+            System.out.println("4. Delete Contacts");
             System.out.println("Enter Your Choice");
             choice = sc.nextInt();
         }
         System.out.println("The Program End");
     }
+
 }
