@@ -10,6 +10,46 @@ public class AddressBook {
 
     private static ArrayList<Contacts> list = new ArrayList<Contacts>();
 
+    /**
+     * Call method to edit the contact by searching firstname
+     */
+    private void editContact() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter firstname to edit contact: ");
+        String name = sc.nextLine();
+        for (Contacts search : list) {
+            if (name.equalsIgnoreCase(search.getFirstName())) {
+                System.out.println("Entered Name found in the Contacts");
+                System.out.println("Enter the updated first name");
+                String firstName = sc.next();
+                search.setFirstName(firstName);
+                System.out.println("Enter the updated last name");
+                String lastName = sc.next();
+                search.setLastName(lastName);
+                System.out.println("Enter the updated address");
+                String address = sc.next();
+                search.setAddress(address);
+                System.out.println("Enter the updated city");
+                String city = sc.next();
+                search.setCity(city);
+                System.out.println("Enter the updated state");
+                String state = sc.next();
+                search.setState(state);
+                System.out.println("Enter the updated zipcode");
+                int zip = sc.nextInt();
+                search.setZip(zip);
+                System.out.println("Enter the updated phoneNumber");
+                long phoneNumber = sc.nextInt();
+                search.setPhoneNumber(phoneNumber);
+                System.out.println("Enter the updated emailID");
+                String email = sc.next();
+                search.setEmail(email);
+                search.display();
+            } else {
+                System.out.println("Entered name not  found in the AddressBook");
+            }
+        }
+    }
     /*
      * Call method to add contacts in ArrayList
      * Create object and add details in it and put it in that list
@@ -44,6 +84,8 @@ public class AddressBook {
         Scanner sc = new Scanner(System.in);
         System.out.println("0. Exit");
         System.out.println("1. Add Contacts");
+        System.out.println("2. Show Contacts");
+        System.out.println("3. Edit Contacts");
         System.out.println("Enter Your Choice");
         int choice = sc.nextInt();
         while (choice >= 1) {
@@ -51,6 +93,24 @@ public class AddressBook {
                 case 1:
                     Contacts1.AddContactsDetails();
                     break;
+                case 2:
+                    for (Contacts show : list) {
+                        System.out.println(" ");
+                        System.out.println("First Name = " + show.getFirstName());
+                        System.out.println("Last Name = " + show.getLastName());
+                        System.out.println("Address = " + show.getAddress());
+                        System.out.println("City Name = " + show.getCity());
+                        System.out.println("State = " + show.getState());
+                        System.out.println("Zip Code = " + show.getZip());
+                        System.out.println("Phone Number = " + show.getPhoneNumber());
+                        System.out.println("Email = " + show.getEmail());
+                    }
+                    break;
+
+                case 3:
+                    Contacts1.editContact();
+                    break;
+
                 default:
                     System.out.println("Invalid input");
                     break;
@@ -58,6 +118,8 @@ public class AddressBook {
             System.out.println(" ");
             System.out.println("0. Exit");
             System.out.println("1. Add Contacts");
+            System.out.println("2. Show Contacts");
+            System.out.println("3. Edit Contacts");
             System.out.println("Enter Your Choice");
             choice = sc.nextInt();
         }
