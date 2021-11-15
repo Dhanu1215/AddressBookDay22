@@ -1,6 +1,7 @@
 package com.blp.addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -96,51 +97,65 @@ public class AddressBook {
     }
 
     public static void main(String[] args) {
-        AddressBook Contacts1 = new AddressBook();
         Scanner sc = new Scanner(System.in);
-        System.out.println("0. Exit");
-        System.out.println("1. Add Contacts");
-        System.out.println("2. Show Contacts");
-        System.out.println("3. Edit Contacts");
-        System.out.println("4. Delete Contacts");
-        System.out.println("Enter Your Choice");
-        int choice = sc.nextInt();
-        while (choice >= 1) {
-            switch (choice) {
+        HashMap<String, AddressBook> addressBooks = new HashMap<>();
+        AddressBook book1 = new AddressBook();
+        AddressBook book2 = new AddressBook();
+        AddressBook book3 = new AddressBook();
+        addressBooks.put("AddressBook1", book1);
+        addressBooks.put("AddressBook2", book2);
+        addressBooks.put("AddressBook3", book3);
+        System.out.println("Choose Address Book");
+        System.out.println("1. AddressBook 1");
+        System.out.println("2. AddressBook 2");
+        System.out.println("3. AddressBook 3");
+        int chooseAddressBook = sc.nextInt();
+        System.out.println("Choose What to do in this Address Book");
+        while (chooseAddressBook >= 1) {
+            System.out.println(" ");
+            System.out.println("1. Add Contacts");
+            System.out.println("2. Edit Contacts");
+            System.out.println("3. Delete Contacts");
+            System.out.println("Enter Your Choice");
+            int choice = sc.nextInt();
+            switch (chooseAddressBook) {
                 case 1:
-                    Contacts1.AddContactsDetails();
+                    if (choice == 1) {
+                        book1.AddContactsDetails();
+                    } else if (choice == 2) {
+                        book1.editContact();
+                    } else if (choice == 3) {
+                        book1.deleteContact();
+                    }
                     break;
                 case 2:
-                    for (Contacts show : list) {
-                        System.out.println(" ");
-                        System.out.println("First Name = " + show.getFirstName());
-                        System.out.println("Last Name = " + show.getLastName());
-                        System.out.println("Address = " + show.getAddress());
-                        System.out.println("City Name = " + show.getCity());
-                        System.out.println("State = " + show.getState());
-                        System.out.println("Zip Code = " + show.getZip());
-                        System.out.println("Phone Number = " + show.getPhoneNumber());
-                        System.out.println("Email = " + show.getEmail());
+                    if (choice == 1) {
+                        book2.AddContactsDetails();
+                    } else if (choice == 2) {
+                        book2.editContact();
+                    } else if (choice == 3) {
+                        book2.deleteContact();
                     }
                     break;
                 case 3:
-                    Contacts1.editContact();
-                    break;
-                case 4:
-                    Contacts1.deleteContact();
+                    if (choice == 1) {
+                        book3.AddContactsDetails();
+                    } else if (choice == 2) {
+                        book3.editContact();
+                    } else if (choice == 3) {
+                        book3.deleteContact();
+                    }
                     break;
                 default:
                     System.out.println("Invalid input");
                     break;
             }
-            System.out.println(" ");
+            System.out.println("1. AddressBook 1");
+            System.out.println("2. AddressBook 2");
+            System.out.println("3. AddressBook 3");
             System.out.println("0. Exit");
-            System.out.println("1. Add Contacts");
-            System.out.println("2. Show Contacts");
-            System.out.println("3. Edit Contacts");
-            System.out.println("4. Delete Contacts");
-            System.out.println("Enter Your Choice");
-            choice = sc.nextInt();
+            chooseAddressBook = sc.nextInt();
+
         }
         System.out.println("The Program End");
     }
