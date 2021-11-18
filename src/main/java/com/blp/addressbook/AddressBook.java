@@ -9,7 +9,23 @@ import java.util.Scanner;
  */
 public class AddressBook {
 
-    private static ArrayList<Contacts> list = new ArrayList<Contacts>();
+    private static final ArrayList<Contacts> list = new ArrayList<Contacts>();
+
+    /**
+     * Call method to check duplicate entry
+     */
+    private void checkDuplicateEntry() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter firstname to Check duplicate entry Contact: ");
+        String name = sc.nextLine();
+        for (Contacts search : list) {
+            if (name.equalsIgnoreCase(search.getFirstName())) {
+                System.out.println("Entered name found in the Address Book");
+            } else {
+                System.out.println("Entered name not found in the Address Book");
+            }
+        }
+    }
 
     /**
      * Call method to delete contact by searching firstname in contact list
@@ -116,6 +132,7 @@ public class AddressBook {
             System.out.println("1. Add Contacts");
             System.out.println("2. Edit Contacts");
             System.out.println("3. Delete Contacts");
+            System.out.println("4. check duplicate entry");
             System.out.println("Enter Your Choice");
             int choice = sc.nextInt();
             switch (chooseAddressBook) {
@@ -126,6 +143,8 @@ public class AddressBook {
                         book1.editContact();
                     } else if (choice == 3) {
                         book1.deleteContact();
+                    }else if (choice == 4) {
+                        book1.checkDuplicateEntry();
                     }
                     break;
                 case 2:
@@ -135,6 +154,8 @@ public class AddressBook {
                         book2.editContact();
                     } else if (choice == 3) {
                         book2.deleteContact();
+                    }else if (choice == 4) {
+                        book2.checkDuplicateEntry();
                     }
                     break;
                 case 3:
@@ -144,6 +165,8 @@ public class AddressBook {
                         book3.editContact();
                     } else if (choice == 3) {
                         book3.deleteContact();
+                    }else if (choice == 4) {
+                        book3.checkDuplicateEntry();
                     }
                     break;
                 default:
