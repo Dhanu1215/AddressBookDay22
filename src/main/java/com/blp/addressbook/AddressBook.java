@@ -12,6 +12,22 @@ public class AddressBook {
     private static final ArrayList<Contacts> list = new ArrayList<Contacts>();
 
     /**
+     * Call method to Search person in multiple address book.
+     */
+    private void searchPerson() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter city to search person entry in Contact: ");
+        String city = sc.nextLine();
+        for (Contacts search : list) {
+            if (city.equalsIgnoreCase(search.getFirstName())) {
+                System.out.println("Entered city found in the Address Book");
+            } else {
+                System.out.println("Entered city not found in the Address Book");
+            }
+        }
+    }
+
+    /**
      * Call method to check duplicate entry
      */
     private void checkDuplicateEntry() {
@@ -133,6 +149,7 @@ public class AddressBook {
             System.out.println("2. Edit Contacts");
             System.out.println("3. Delete Contacts");
             System.out.println("4. check duplicate entry");
+            System.out.println("5. search person");
             System.out.println("Enter Your Choice");
             int choice = sc.nextInt();
             switch (chooseAddressBook) {
@@ -146,6 +163,9 @@ public class AddressBook {
                     }else if (choice == 4) {
                         book1.checkDuplicateEntry();
                     }
+                    else if (choice == 5) {
+                        book1.searchPerson();
+                    }
                     break;
                 case 2:
                     if (choice == 1) {
@@ -157,6 +177,9 @@ public class AddressBook {
                     }else if (choice == 4) {
                         book2.checkDuplicateEntry();
                     }
+                    else if (choice == 5) {
+                        book2.searchPerson();
+                    }
                     break;
                 case 3:
                     if (choice == 1) {
@@ -167,6 +190,8 @@ public class AddressBook {
                         book3.deleteContact();
                     }else if (choice == 4) {
                         book3.checkDuplicateEntry();
+                    }else if (choice == 5) {
+                        book2.searchPerson();
                     }
                     break;
                 default:
