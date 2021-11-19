@@ -21,6 +21,7 @@ public class AddressBook {
         for (Contacts search : list) {
             if (city.equalsIgnoreCase(search.getFirstName())) {
                 System.out.println("Entered city found in the Address Book");
+                search.display();
             } else {
                 System.out.println("Entered city not found in the Address Book");
             }
@@ -37,6 +38,7 @@ public class AddressBook {
         for (Contacts search : list) {
             if (name.equalsIgnoreCase(search.getFirstName())) {
                 System.out.println("Entered name found in the Address Book");
+                search.display();
             } else {
                 System.out.println("Entered name not found in the Address Book");
             }
