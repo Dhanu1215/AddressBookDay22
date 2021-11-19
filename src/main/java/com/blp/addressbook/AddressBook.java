@@ -19,7 +19,7 @@ public class AddressBook {
         System.out.println("Enter city to search person entry in Contact: ");
         String city = sc.nextLine();
         for (Contacts search : list) {
-            if (city.equalsIgnoreCase(search.getFirstName())) {
+            if (city.equalsIgnoreCase(search.getCity())) {
                 System.out.println("Entered city found in the Address Book");
                 search.display();
             } else {
@@ -150,8 +150,8 @@ public class AddressBook {
             System.out.println("1. Add Contacts");
             System.out.println("2. Edit Contacts");
             System.out.println("3. Delete Contacts");
-            System.out.println("4. check duplicate entry");
-            System.out.println("5. search person");
+            System.out.println("4. Check duplicate entry");
+            System.out.println("5. Search person by city");
             System.out.println("Enter Your Choice");
             int choice = sc.nextInt();
             switch (chooseAddressBook) {
