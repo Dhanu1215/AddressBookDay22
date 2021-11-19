@@ -12,7 +12,7 @@ public class AddressBook {
     private static final ArrayList<Contacts> list = new ArrayList<Contacts>();
 
     /**
-     * Call method to Search person in multiple address book.
+     * Call method to Search person in multiple address book and display the details .
      */
     private void searchPerson() {
         Scanner sc = new Scanner(System.in);
